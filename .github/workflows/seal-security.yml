@@ -38,11 +38,6 @@ jobs:
           fix_mode: ${{ github.event.inputs.fix_mode || 'remote' }}
           target: pom.xml
           token: ${{ secrets.SEAL_TOKEN }}
-        env:
-          SEAL_SNYK_URL: "https://api.snyk.io"
-          SEAL_SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          SEAL_SNYK_ORG_ID: "bf279eb4-3b32-4731-ba49-ea7588371789"
-          SEAL_SNYK_PROJECT_ID: "5193ce84-979c-4dba-9efc-74ff35dd920f"
 
       - name: Build Application
         run: mvn package -DskipTests -B
