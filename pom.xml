@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.sealsecurity</groupId>
-    <artifactId>maven-demo</artifactId>
+    <artifactId>seans-surf-and-skate</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>maven-demo</name>
-    <description>Demo application showing Seal Security vulnerability remediation in Maven projects</description>
+    <name>seans-surf-and-skate</name>
+    <description>Sean's Surf &amp; Skate Co. storefront — demo app for Seal Security vulnerability remediation</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

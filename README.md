@@ -29,7 +29,7 @@ up with real findings.
 
 ```bash
 mvn clean package
-java -jar target/maven-demo-1.0.0.jar
+java -jar target/seans-surf-and-skate-1.0.0.jar
 # open http://localhost:8080
 ```
 
