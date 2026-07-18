@@ -16,6 +16,16 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
         cache: 'maven'
+    - name: Resolve dependencies
+      run: mvn dependency:resolve
+    - name: seal cli
+      uses: seal-community/cli-action@latest
+      with:
+        mode: fix
+        fix_mode: remote
+        token: ${{ secrets.SEAL_TOKEN }}
+        project: 56078781DA8B1F204F5779B833E3F6D8A39EE0F9
+        target: pom.xml
     - name: Build Application
       run: mvn clean package -DskipTests
     - name: Run Server with ngrok
